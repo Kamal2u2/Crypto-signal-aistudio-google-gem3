@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CryptoSignal Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // Polyfill Node.js globals for browser environments
+      // This prevents "process is not defined" or "Buffer is not defined" errors in technicalindicators
+      window.global = window;
+      window.process = { env: { NODE_ENV: 'production' }, version: '' };
+      if (!window.Buffer) {
+          window.Buffer = { 
+            isBuffer: (obj) => obj && obj.constructor && typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj),
+            from: (data) => data, 
+            alloc: (size) => new Uint8Array(size)
+          };
+      }
+      
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              'dark-bg': '#0D1117',
+              'dark-card': '#161B22',
+              'dark-border': '#30363D',
+              'dark-text': '#C9D1D9',
+              'dark-text-secondary': '#8B949E',
+              'accent-blue': '#58A6FF',
+              'accent-green': '#3FB950',
+              'accent-red': '#F85149',
+              'accent-yellow': '#E3B341',
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+          },
+        },
+      }
+    </script>
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/client": "https://aistudiocdn.com/react-dom@^19.2.0/client",
+    "react-dom": "https://aistudiocdn.com/react-dom@^19.2.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.28.0",
+    "lightweight-charts": "https://aistudiocdn.com/lightweight-charts@^5.0.9",
+    "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.24",
+    "technicalindicators": "https://aistudiocdn.com/technicalindicators@^3.1.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+  }
+}
+</script>
+  </head>
+  <body class="bg-dark-bg text-dark-text">
+    <div id="root"></div>
+    <script type="module" src="./index.tsx"></script>
+  </body>
+</html>
